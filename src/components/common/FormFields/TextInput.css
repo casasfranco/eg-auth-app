@@ -1,0 +1,20 @@
+input {
+  background-color: #eee;
+  border: none;
+  padding: 12px 15px;
+  margin: 8px 0;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  outline: none;
+  flex: 1;
+  min-width: 12px;
+  width: 100%;
+}
+.is-invalid {
+  border: 1px solid rgba(196, 3, 3, 0.818);
+}
+.invalid-feedback {
+  color: red !important;
+  margin-bottom: 12px;
+}

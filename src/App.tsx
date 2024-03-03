@@ -1,26 +1,39 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Route, Routes } from 'react-router';
 
-function App() {
+import './App.css';
+import { Auth } from './pages';
+import ProtectedRoute from './lib/helpers/ProtectedRoute';
+
+const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Routes>
+      <Route
+        path="/"
+        element={
+          <ProtectedRoute>
+            <p>Welcome to the application.</p>
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/auth"
+        element={
+          <ProtectedRoute inverse>
+            <Auth />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="*"
+        element={
+          <div>
+            <p>404 not found</p>
+          </div>
+        }
+      />
+    </Routes>
   );
-}
+};
 
 export default App;
